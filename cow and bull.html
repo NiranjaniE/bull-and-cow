@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        Game
+    </title>
+    <link href="C:\Users\Niranjani\Desktop\cow bull.css" rel="stylesheet" />
+</head>
+<body>
+    <p> <h1>THE BULL AND COW</h1></p>
+    <div id="user1"><br /><br /><br /><br /><br /><br /><br /><br /><br />
+        Player1: <input type="text" id="myText">
+
+       
+        <input type="button" value="Next" onclick="EnableDisableTextBox(this)" />
+    </div>
+   
+    <div>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        Player2:
+        <input type="text" id="txtmy" disabled="disabled" />
+        <input type="button" value="Compare" onclick="compare()" />
+        <p id="result"></p>
+    </div>
+    <script type="text/javascript">
+        function compare() {
+            var input1 = document.getElementById("myText").value;
+            var input2 = document.getElementById("txtmy").value;
+            var bullcount = 0;
+            const obj1 = input1.split("");
+            const obj2 = input2.split("");
+            for (var i = 0; i < obj1.length; i++) {
+                for (var j = 0; j < obj2.length; j++) {
+                    if (obj1[i] == obj2[j] && i != j) {
+                        bullcount++;
+                    }
+                }
+            }
+
+            var cowcount = 0;
+            const obj3 = input1.split("");
+            const obj4 = input2.split("");
+            for (var i = 0; i < obj3.length; i++) {
+                for (var j = 0; j < obj4.length; j++) {
+                    if (obj3[i] == obj4[j] && i == j) {
+                        cowcount++;
+                    }
+                }
+            }
+
+            document.getElementById("result").innerHTML = cowcount + " COW " + bullcount + " BULL";
+        }
+        function EnableDisableTextBox(btnPassport) {
+            var txtmy = document.getElementById("txtmy");
+            if (btnPassport.value == "Next") {
+                txtmy.removeAttribute("disabled");
+                document.getElementById("user1").style.display = 'none';
+
+            } else {
+                txtPassportNumber.setAttribute("disabled", "disabled");
+            }
+        }
+    </script>
+</body>
